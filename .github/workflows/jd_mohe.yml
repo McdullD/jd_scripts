@@ -1,18 +1,17 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: jd_dreamFactory 京喜工厂
+name: jd_mohe 5G超级盲盒 04-30
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */3 * * *'
- 
-
+    - cron: '0 */3 19-31 3 *'
+    - cron: '0 */3 1-30 4 *'  
   # watch:
   #   types: started
   repository_dispatch:
-    types: jd_dreamFactory
+    types: jd_mohe
 jobs:
   build:
 
@@ -33,16 +32,15 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
-      - name: '运行 【京喜工厂】'
-        run: | 
-          cd ~/scripts
-          npm install 
-          node jd_dreamFactory.js
+      - name: '运行 【5G超级盲盒】'
+        run: |
+          cd  ~/scripts
+          npm install
+          node jd_mohe.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          DREAM_FACTORY_SHARE_CODES: ${{ secrets.DREAM_FACTORY_SHARE_CODES }}
-          DREAMFACTORY_FORBID_ACCOUNT: ${{ secrets.DREAMFACTORY_FORBID_ACCOUNT }}  #输入`1`代表第一个京东账号不运行，多个使用`&`连接
+          
           #微信酱
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           #BARK推送
